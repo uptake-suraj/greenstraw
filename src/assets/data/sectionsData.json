@@ -1,0 +1,27 @@
+[
+    {
+      "title": "BRINGING TOGETHER EXPERTISE",
+      "bgColor": "bg-red-500"
+    },
+    {
+      "title": "GENDER EQUALITY",
+      "bgColor": "bg-blue-500"
+    },
+    {
+      "title": "ENVIRONMENT AND CLIMATE CHANGE",
+      "bgColor": "bg-green-500"
+    },
+    {
+      "title": "ECONOMIC SERVICES AND GOVERNANCE",
+      "bgColor": "bg-purple-300"
+    },
+    {
+      "title": "AGRIFOOD POLICIES AND SUCCESSION",
+      "bgColor": "bg-orange-400"
+    },
+    {
+      "title": "OUR PARTNERS",
+      "bgColor": "bg-yellow-400"
+    }
+  ]
+  

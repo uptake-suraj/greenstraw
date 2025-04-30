@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "font-heal";
+  src: url("../src/assets/font_heal/HealTheWebA-Regular.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "font-heal-B";
+  src: url("../src/assets/font_heal/HealTheWebB-Regular.otf") format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "font-nohemi";
+  src: url("../src/assets/font_nohemi/Nohemi-Regular-BF6438cc58b98fc.otf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "font-nohemi-light";
+  src: url("../src/assets/font_nohemi/Nohemi-Light-BF6438cc583f70b.otf") format("truetype");
+  font-weight: 300;
+}
+
+@layer base {
+  html {
+    font-family: "font-heal", sans-serif;
+    font-weight: 400;
+  }
+}
+@theme {
+  --font-heal: "font-heal-B", serif;
+  --font-nohemi: "font-nohemi", serif;
+  --font-nohemi-light: "font-nohemi-light", serif;
+
+}
+
+/* Webkit Scrollbar  [  Chrome, Safari, Opera  ] */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+}
