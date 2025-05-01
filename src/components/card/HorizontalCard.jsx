@@ -3,7 +3,7 @@ import { HiPlus } from "react-icons/hi";
 
 const HorizontalCard = ({ image, title, content1, content2 , bgColor }) => {
   return (
-    <div className={`rounded-[20px] ${bgColor} flex flex-col md:flex-row items-stretch gap-18 p-6 md:p-8 max-w-[1500px] mx-auto`}>
+    <div className={`rounded-[20px] ${bgColor} flex flex-col md:flex-row items-stretch sm:gap-18 gap-5 p-6 md:p-8 max-w-[1500px] mx-auto`}>
       
       {/* Image Wrapper */}
       <div className="w-full md:w-[60%] h-auto overflow-hidden rounded-[12px]">
@@ -20,11 +20,11 @@ const HorizontalCard = ({ image, title, content1, content2 , bgColor }) => {
       <div className="w-full md:w-[60%] flex flex-col">
         <div>
           <h2>What We Do</h2>
-          <p className="text-4xl font-medium mb-4 tracking-wider">
+          <p className="sm:text-4xl text-2xl font-medium mb-4 tracking-wider">
             {title}
           </p>
-          <p className="text-[26px] font-nohemi-light text-black mb-2">{content1}</p>
-          <p className="text-[26px] text-black font-nohemi-light">{content2}</p>
+          <p className="sm:text-[26px] text-base font-nohemi-light text-black mb-2">{content1}</p>
+          <p className="sm:text-[26px] text-base text-black font-nohemi-light">{content2}</p>
         </div>
 
         {/* Button */}
