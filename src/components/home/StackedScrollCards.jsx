@@ -32,7 +32,7 @@ const StackedScrollCards = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "top top",
+        start: "top -150",
         end: `+=${cards.length * 1000}`,
         pin: true,
         scrub: 1,
@@ -64,13 +64,16 @@ const StackedScrollCards = () => {
       }
 
       // Ensure that previous images disappear when new one comes into view
-      tl.to(card, {
-        opacity: 0, // Fade out previous image
-        yPercent: -50, // Slide out upwards
-        scale: 0.95, // Shrink the previous image
-        duration: 1,
-        stagger: 0.1,
-      }, `-=${0.3}`);
+      if (index !== cards.length - 1) {
+        tl.to(card, {
+          opacity: 0,
+          yPercent: -50,
+          scale: 0.95,
+          duration: 1,
+          stagger: 0.1,
+        }, `-=${0.3}`);
+      }
+      
     });
 
     animationRef.current = tl;
@@ -84,13 +87,13 @@ const StackedScrollCards = () => {
   return (
     <section
       ref={containerRef}
-      className="relative h-[100vh] overflow-hidden px-4 py-24 xl:hidden"
+      className="relative h-[150vh] overflow-hidden px-4 py-24 xl:hidden "
     >
       {horizontalData.map((item, index) => (
         <div
           key={item.id}
           ref={(el) => (cardRefs.current[index] = el)}
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl"
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl "
           style={{ zIndex: 10 - index }}
         >
           <HorizontalCard {...item} />

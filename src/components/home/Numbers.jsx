@@ -13,14 +13,13 @@ const Numbers = () => {
   useEffect(() => {
     cardsRef.current.forEach((card, index) => {
       gsap.to(card, {
-        y: index % 2 === 0 ? 140 : -120,
+        y: window.innerWidth > 768 ? index % 2 === 0 ? 140 : -120 : -120,
         ease: "none",
         scrollTrigger: {
           trigger: card,
           start: "top bottom",
           end: "bottom top",
           scrub: 0.5,
-          
         },
       });
     });
@@ -33,7 +32,7 @@ const Numbers = () => {
           OUR NUMBERS THAT SPEAK
         </h1>
 
-        <div className="relative space-y-12">
+        <div className="relative max-sm:space-y-12">
           {NumbersData.map((stat, index) => (
             <div
               key={index}
