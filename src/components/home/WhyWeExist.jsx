@@ -3,7 +3,7 @@ import React from "react";
 const WhyWeExists = () => {
   return (
     <section>
-      <div className="bg-[#f9f3ee] min-h-screen p-6 ">
+      <div className=" min-h-screen p-6 ">
         <div className="relative  w-full">
           {/* White container */}
           <div className="bg-white rounded-4xl max-w-[1400px] pl-18 pt-8 pb-22 pr-12 mb-4 mt-4">
@@ -52,12 +52,12 @@ const WhyWeExists = () => {
 
           {/* Orange box that extends outside the white container */}
           <div className="-mt-20 ml-120 bg-orange-300 rounded-4xl p-12 mb-4">
-            <h2 className="text-center text-5xl font-medium mb-6">
+            <p className="text-center text-5xl font-medium mb-6 border-b border-white pb-2">
               THE GREENSTRAW EXISTS BECAUSE WE BELIEVE:
-            </h2>
+            </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 bg-orange-200 rounded-md">
+              <div className="p-4  rounded-md">
                 <p className="text-lg">
                   Sustainable living can be accessible, practical, and impactful
                   when embraced through education, community collaboration, and
@@ -65,14 +65,15 @@ const WhyWeExists = () => {
                 </p>
               </div>
 
-              <div className="p-4 bg-orange-200 rounded-md">
+              <div className="p-4  rounded-md">
                 <p className="text-lg">
                   Empowering individuals and businesses to adopt low-waste,
                   eco-friendly practices is key to creating lasting change.
                 </p>
               </div>
 
-              <div className="p-4 bg-orange-200 rounded-md">
+
+              <div className="p-4  rounded-md">
                 <p className="text-lg">
                   Preserving our environment requires thoughtful interventions,
                   which we deliver through workshops, a café, and collaborative
@@ -80,7 +81,7 @@ const WhyWeExists = () => {
                 </p>
               </div>
 
-              <div className="p-4 bg-orange-200 rounded-md">
+              <div className="p-4  rounded-md">
                 <p className="text-lg">
                   Our mission is to inspire conscious living and connect people
                   with sustainable alternatives, creating a community that works
@@ -89,7 +90,7 @@ const WhyWeExists = () => {
               </div>
             </div>
 
-            <div className="mt-4 p-4 bg-orange-200 rounded-md">
+            <div className="mt-4 p-4  rounded-md">
               <p className="text-lg text-center">
                 By reimagining everyday actions—whether through mindful
                 consumption or participation in environmental initiatives—we aim

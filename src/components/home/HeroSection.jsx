@@ -46,12 +46,12 @@ const HeroSection = () => {
         style={{ backgroundImage: `url(${Images.Line})` }}
       >
         {/* Centered Heading */}
-        <div class="flex flex-col ">
-          <h1 class="text-6xl  ml-50 lg:text-8xl font-medium text-gray-800 leading-tight z-49">
+        <div className="flex flex-col ">
+          <h1 className="text-6xl  ml-50 lg:text-8xl font-medium text-gray-800 leading-tight z-49">
             TOGETHER,
           </h1>
-          <div class="ml-0 flex justify-center">
-            <h1 class="text-6xl lg:text-8xl font-medium text-gray-800 leading-tight z-49">
+          <div className="ml-0 flex justify-center">
+            <h1 className="text-6xl lg:text-8xl font-medium text-gray-800 leading-tight z-49">
               LET'S SHAPE TOMORROW
             </h1>
           </div>

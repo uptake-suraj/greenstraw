@@ -8,14 +8,14 @@ import OurImpact from "../components/home/OurImpact";
 
 const Home = () => {
   return (
-    <>
+    <section className="overflow-hidden bg-[#f7f1eb]">
       <HeroSection />
       <OurImpact />
-      {/* <HorizontalScrollCards />
+      <HorizontalScrollCards />
       <WhyWeExists />
       <Numbers/>
-      <ReportSections /> */}
-    </>
+      <ReportSections />
+    </section>
   );
 };
 

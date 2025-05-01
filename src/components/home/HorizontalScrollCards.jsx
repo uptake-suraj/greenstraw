@@ -7,10 +7,9 @@ const HorizontalScrollCards = () => {
   const scrollRef = useHorizontalScroll();
 
   return (
-    <section>
-      <div className="w-full overflow-x-hidden">
-      <p>What We Do</p>
-        <div ref={scrollRef} className="flex gap-8 w-max px-10 py-20">
+    <section className="lg:my-20">
+      <div className="w-full">
+        <div ref={scrollRef} className="flex gap-8 w-max px-4 py-20">
           {horizontalData?.map((item) => (
             <HorizontalCard key={item.id} {...item} />
           ))}

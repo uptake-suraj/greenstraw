@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+
+
 @font-face {
   font-family: "font-heal";
   src: url("../src/assets/font_heal/HealTheWebA-Regular.otf") format("truetype");

@@ -98,7 +98,7 @@ const Footer = () => {
   <p className="flex items-center">
     Powered by
     <Link to="https://uptakeinfotech.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center">
-      <img src={Images.uptakeLogo} alt="uptake infotech" className="h-10 w-12 object-contain" />
+      <img src={Images.uptakeLogo} alt="uptake infotech" className="h-10 w-12 object-contain mb-3 " />
     </Link>
   </p>
 </div>

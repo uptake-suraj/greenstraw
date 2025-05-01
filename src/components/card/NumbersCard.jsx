@@ -4,27 +4,27 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const NumbersCard = ({ stat , parallaxConfig }) => {
+const NumbersCard = ({ stat, parallaxConfig }) => {
   const cardRef = useParallax(parallaxConfig);
 
   return (
-    <div 
+    <div
       ref={cardRef}
       className="rounded-2xl p-8"
-      style={{ 
+      style={{
         backgroundColor: stat.bgColor,
         width: "480px",
         height: "300px",
         position: "relative",
-        zIndex: 1,
+        display: "flex",
         flexDirection: "column",
-    
-    }}
-  >
-    <h2 className="text-[55px] font-bold mb-2">{stat.value}</h2>
-    <hr className="border-t border-black opacity-20 mb-3" />
-    <p className="text-3xl">{stat.label}</p>
-  </div>
+        justifyContent: "space-between",
+      }}
+    >
+      <h2 className="text-[55px] font-bold mb-2">{stat.value}</h2>
+      <hr className="border-t border-black opacity-20 mb-3" />
+      <p className="text-3xl">{stat.label}</p>
+    </div>
   );
 };
 
