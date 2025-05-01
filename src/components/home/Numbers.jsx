@@ -26,7 +26,7 @@ const Numbers = () => {
   }, []);
 
   return (
-    <div className="bg-[#f3f1ec] min-h-screen p-6" ref={sectionRef}>
+    <div className=" min-h-screen p-6" ref={sectionRef}>
       <div className="max-w-5xl mx-auto">
         <h1 className="text-4xl md:text-6xl font-medium text-center mb-16">
           OUR NUMBERS THAT SPEAK
@@ -41,7 +41,7 @@ const Numbers = () => {
                 index % 2 === 0 ? "flex justify-start" : "flex justify-end"
               }`}
             >
-              <NumbersCard stat={stat} />
+              <NumbersCard stat={stat} rotate={index % 2 === 0 ? "rotate-5" : "-rotate-8"} />
             </div>
           ))}
         </div>

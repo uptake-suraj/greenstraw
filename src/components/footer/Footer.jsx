@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Images } from "../../assets/images";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa";
+import Marquee from "react-fast-marquee";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -18,15 +19,27 @@ const Footer = () => {
 
     
       <div className="absolute top-0 w-full flex justify-center">
-        <h1 className="sm:text-[90px] md:text-[120px] lg:text-[150px] font-medium text-[#BFB5F0] tracking-widest text-center">
-          LANDS OF COMMITMENT
-        </h1>
-      </div>
+  {/* Marquee for sm and md screens */}
+  <div className="block lg:hidden w-full">
+    <Marquee speed={80} gradient={false}>
+      <h1 className="text-[60px] sm:text-[90px] md:text-[120px] font-medium text-[#BFB5F0] tracking-widest whitespace-nowrap">
+        LANDS OF COMMITMENT
+      </h1>
+    </Marquee>
+  </div>
 
+  {/* Static text for lg and above */}
+  <h1 className="hidden lg:block text-[150px] font-medium text-[#BFB5F0] tracking-widest text-center">
+    LANDS OF COMMITMENT
+  </h1>
+</div>
+
+{/* White Box */}
   
-      <div className="absolute bottom-20 w-full px-4 sm:px-8 md:px-10 lg:px-12 z-50">
+<div className="relative 2xl:absolute 2xl:bottom-20 w-full px-4 sm:px-8 md:px-10 lg:px-12 z-50 mt-10 2xl:mt-0">
+
         <div className="bg-white shadow-lg rounded-3xl p-6 md:p-10">
-          <div className="flex flex-col md:flex-row justify-between gap-8">
+          <div className="flex flex-col lg:flex-row justify-between gap-8">
             
             <div className="flex-shrink-0">
               <img

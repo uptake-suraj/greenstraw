@@ -29,7 +29,7 @@ import { Images } from "../images";
       "id": 4,
       "image": `${Images.horizontalCard2}`,
       "title": "Events and Workshops",
-      "bgColor": "bg-red-500",
+      "bgColor": "bg-yellow-100",
       "content1": "Educational Workshops: Engaging sessions that empower individuals with practical knowledge and skills to embrace sustainable living.",
       "content2": "Inspiring Events: Dynamic gatherings that foster community involvement and awareness around environmental issues, promoting positive change."
     }

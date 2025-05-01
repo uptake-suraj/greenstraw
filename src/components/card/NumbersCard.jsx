@@ -4,17 +4,17 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const NumbersCard = ({ stat, parallaxConfig }) => {
+const NumbersCard = ({ stat, parallaxConfig, rotate }) => {
   const cardRef = useParallax(parallaxConfig);
 
   return (
     <div
       ref={cardRef}
-      className="rounded-2xl p-8"
+      className={`rounded-2xl p-8 ${rotate}`}
       style={{
         backgroundColor: stat.bgColor,
-        width: "480px",
-        height: "300px",
+        width: "500px",
+        height: "360px",
         position: "relative",
         display: "flex",
         flexDirection: "column",

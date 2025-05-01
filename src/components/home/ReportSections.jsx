@@ -4,7 +4,7 @@ import SectionCard from "../card/SectionCard";
 
 const ReportSections = () => {
   return (
-    <div className="p-6 md:p-10 bg-[#f9f3ee] min-h-screen">
+    <div className="p-6 md:p-10 bg-[#f9f3ee] lg:my-20 my-10">
       <h2 className="text-2xl md:text-6xl font-medium mb-6 border-b border-[#D3D3D3] tracking-wider pb-2">
         VIEW THE SECTIONS OF THE REPORT
       </h2>

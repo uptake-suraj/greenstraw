@@ -1,9 +1,9 @@
 import { HiArrowRight } from "react-icons/hi";
-import useScaleAnimation from "../../hook/useFadeIn";
- 
+import useScaleAnimation from "../../hook/useFadeIn"; 
+
 const SectionCard = ({ title, bgColor }) => {
-  const cardRef = useScaleAnimation("scaleUp", 0.3, 1);
- 
+  const cardRef = useScaleAnimation(0.2, 0.7);
+
   return (
     <div
       ref={cardRef}
@@ -18,5 +18,5 @@ const SectionCard = ({ title, bgColor }) => {
     </div>
   );
 };
- 
+
 export default SectionCard;
