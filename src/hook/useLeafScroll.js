@@ -17,7 +17,7 @@ const useLeafScroll = (yellowLeafRef, greenShapeRef) => {
 
     // Green shape movement - Larger range and faster
     const greenTween = gsap.to(greenShapeRef.current, {
-      y: 120,  // Vertical movement
+      y: 80,  // Vertical movement
       x: 30,  // Horizontal movement for variety
       duration: 3, // Speed of animation
       repeat: -1,  // Infinite loop
