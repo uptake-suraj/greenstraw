@@ -12,12 +12,10 @@ const Home = () => {
     <section className="overflow-hidden bg-[#f7f1eb]">
       <HeroSection />
       <OurImpact />
-      <div className="block xl:hidden">
+      <div className="block lg:hidden">
         <StackedScrollCards />
       </div>
-
-      {/* Horizontal scroll for xl and up */}
-      <div className="hidden xl:block">
+      <div className="hidden lg:block">
         <HorizontalScrollCards />
       </div>
       <WhyWeExists />
