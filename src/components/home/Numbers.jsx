@@ -20,13 +20,14 @@ const Numbers = () => {
           start: "top bottom",
           end: "bottom top",
           scrub: 0.5,
+          
         },
       });
     });
   }, []);
 
   return (
-    <div className=" min-h-screen p-6" ref={sectionRef}>
+    <div className="min-h-screen px-4 sm:px-6 md:px-10 py-12" ref={sectionRef}>
       <div className="max-w-5xl mx-auto">
         <h1 className="text-4xl md:text-6xl font-medium text-center mb-16">
           OUR NUMBERS THAT SPEAK
@@ -37,11 +38,19 @@ const Numbers = () => {
             <div
               key={index}
               ref={(el) => (cardsRef.current[index] = el)}
-              className={`stat-card relative z-[${10 - index}] ${
-                index % 2 === 0 ? "flex justify-start" : "flex justify-end"
-              }`}
+              className={`
+                stat-card 
+                relative 
+                ${index % 2 === 0 ? "flex justify-start" : "flex justify-end"}
+                px-2 sm:px-4 md:px-6
+              `}
+             
             >
-              <NumbersCard stat={stat} rotate={index % 2 === 0 ? "rotate-5" : "-rotate-8"} />
+              <NumbersCard
+                stat={stat}
+                rotate={index % 2 === 0 ? "rotate-2" : "-rotate-2"}
+ 
+              />
             </div>
           ))}
         </div>

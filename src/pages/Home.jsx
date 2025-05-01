@@ -5,15 +5,23 @@ import HorizontalScrollCards from "../components/home/HorizontalScrollCards";
 import WhyWeExists from "../components/home/WhyWeExist";
 import Numbers from "../components/home/Numbers";
 import OurImpact from "../components/home/OurImpact";
+import StackedScrollCards from "../components/home/StackedScrollCards";
 
 const Home = () => {
   return (
     <section className="overflow-hidden bg-[#f7f1eb]">
       <HeroSection />
       <OurImpact />
-      <HorizontalScrollCards />
+      <div className="block xl:hidden">
+        <StackedScrollCards />
+      </div>
+
+      {/* Horizontal scroll for xl and up */}
+      <div className="hidden xl:block">
+        <HorizontalScrollCards />
+      </div>
       <WhyWeExists />
-      <Numbers/>
+      <Numbers />
       <ReportSections />
     </section>
   );

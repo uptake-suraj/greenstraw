@@ -19,6 +19,8 @@ const NumbersCard = ({ stat, parallaxConfig, rotate }) => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
+        
+        
       }}
     >
       <h2 className="text-[55px] font-bold mb-2">{stat.value}</h2>
