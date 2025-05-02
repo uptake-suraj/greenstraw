@@ -32,7 +32,7 @@ const StackedScrollCards = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "top -150",
+        start: "top top",
         end: `+=${cards.length * 1000}`,
         pin: true,
         scrub: 1,
@@ -87,7 +87,7 @@ const StackedScrollCards = () => {
   return (
     <section
       ref={containerRef}
-      className="relative h-[150vh] overflow-hidden px-4 py-24 xl:hidden "
+      className="relative h-screen overflow-hidden px-4 py-24 xl:hidden "
     >
       {horizontalData.map((item, index) => (
         <div
