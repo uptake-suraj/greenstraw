@@ -25,7 +25,7 @@ const StackedScrollCards = () => {
 
   useLayoutEffect(() => {
     // Clear old ScrollTrigger animations on resize
-    ScrollTrigger.getAll().forEach(t => t.kill());
+    ScrollTrigger.getAll().forEach((t) => t.kill());
     if (!isSmallScreen || !containerRef.current) return;
 
     const cards = cardRefs.current;
@@ -65,22 +65,25 @@ const StackedScrollCards = () => {
 
       // Ensure that previous images disappear when new one comes into view
       if (index !== cards.length - 1) {
-        tl.to(card, {
-          opacity: 0,
-          yPercent: -50,
-          scale: 0.95,
-          duration: 1,
-          stagger: 0.1,
-        }, `-=${0.3}`);
+        tl.to(
+          card,
+          {
+            opacity: 0,
+            yPercent: -50,
+            scale: 0.95,
+            duration: 1,
+            stagger: 0.1,
+          },
+          `-=${0.3}`
+        );
       }
-      
     });
 
     animationRef.current = tl;
 
     return () => {
       tl.kill();
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, [isSmallScreen]);
 
@@ -96,7 +99,11 @@ const StackedScrollCards = () => {
           className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl "
           style={{ zIndex: 10 - index }}
         >
-          <HorizontalCard {...item} />
+          <HorizontalCard
+            {...item}
+            pageNumber={index + 1}
+            totalPages={horizontalData.length}
+          />
         </div>
       ))}
     </section>
