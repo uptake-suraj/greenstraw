@@ -10,8 +10,8 @@ const HorizontalScrollCards = () => {
     <section className="lg:my-20">
       <div className="w-full">
         <div ref={scrollRef} className="flex gap-8 w-max px-4 py-20">
-          {horizontalData?.map((item) => (
-            <HorizontalCard key={item.id} {...item} />
+          {horizontalData?.map((item , index) => (
+            <HorizontalCard key={item.id} {...item} pageNumber={index + 1} totalPages={horizontalData.length} />
           ))}
         </div>
       </div>
