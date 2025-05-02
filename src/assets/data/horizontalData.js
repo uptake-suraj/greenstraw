@@ -21,7 +21,7 @@ import { Images } from "../images";
       "id": 3,
       "image": `${Images.horizontalCard1}`,
       "title": "Green Consultancy",
-      "bgColor": "bg-red-500",
+      "bgColor": "bg-[#FF8875]",
       "content1": "Driving forward with technology and innovation.",
       "content2": "We invest in smart solutions that bring real-world impact."
     },
