@@ -20,5 +20,3 @@ const HorizontalScrollCards = () => {
 };
 
 export default HorizontalScrollCards;
-
-

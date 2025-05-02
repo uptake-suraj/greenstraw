@@ -30,9 +30,8 @@ const useScaleAnimation = (delay = 0.3, duration = 2) => {
         scrollTrigger: {
           trigger: ref.current,
           start: "top 85%",
-          toggleActions: "play none none reverse",
-          // onEnter callback for debugging if needed
-          // onEnter: () => console.log("Element entered view"),
+          toggleActions: "play none none none",
+          once:true,
           invalidateOnRefresh: true,
         },
       });
