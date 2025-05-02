@@ -11,7 +11,6 @@ export const useHorizontalScroll = () => {
     const element = scrollRef.current;
     if (!element) return;
 
-    const sections = gsap.utils.toArray(element.children);
     const totalWidth = element.scrollWidth;
     const viewportWidth = window.innerWidth;
 
