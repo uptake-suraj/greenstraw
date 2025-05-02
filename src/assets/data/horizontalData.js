@@ -11,7 +11,7 @@ import { Images } from "../images";
     },
     {
       "id": 2,
-      "image": `${Images.horizontalCard2}`,
+      "image": `${Images.whatWeDo2}`,
       "title": "GreenStraw House",
       "bgColor": "bg-purple-200",
       "content1": "Café and Co-working Space: Our eco-friendly hub combines a serene café serving sustainably sourced food and beverages with a collaborative workspace, fostering creativity and sustainable practices in a vibrant community setting.",
@@ -29,6 +29,14 @@ import { Images } from "../images";
       "id": 4,
       "image": `${Images.horizontalCard2}`,
       "title": "Events and Workshops",
+      "bgColor": "bg-yellow-100",
+      "content1": "Educational Workshops: Engaging sessions that empower individuals with practical knowledge and skills to embrace sustainable living.",
+      "content2": "Inspiring Events: Dynamic gatherings that foster community involvement and awareness around environmental issues, promoting positive change."
+    },
+    {
+      "id": 5,
+      "image": `${Images.horizontalCard2}`,
+      "title": "school tgs",
       "bgColor": "bg-yellow-100",
       "content1": "Educational Workshops: Engaging sessions that empower individuals with practical knowledge and skills to embrace sustainable living.",
       "content2": "Inspiring Events: Dynamic gatherings that foster community involvement and awareness around environmental issues, promoting positive change."
