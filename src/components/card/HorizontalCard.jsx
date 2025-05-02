@@ -20,8 +20,8 @@ const HorizontalCard = ({ image, title, content1, content2, bgColor, pageNumber 
       <div className="w-full md:w-[60%] flex flex-col">
         {/* Title and Pagination Row */}
         <div className="flex justify-between items-center border-b border-gray-300 pb-2 mb-4">
-          <p className="text-[#E9E2DA] text-xl sm:text-2xl">What We Do</p>
-          <span className="text-[#a5a2a2] text-sm sm:text-base">{pageNumber} / {totalPages}</span>
+          <p className="text-[#777777] text-xl sm:text-2xl">What We Do</p>
+          <span className="text-[#777777] text-sm sm:text-base">{pageNumber} / {totalPages}</span>
         </div>
 
         <p className="sm:text-4xl text-2xl font-medium mb-4 tracking-wider">
