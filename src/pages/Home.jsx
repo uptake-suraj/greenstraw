@@ -8,16 +8,13 @@ import OurImpact from "../components/home/OurImpact";
 import StackedScrollCards from "../components/home/StackedScrollCards";
 
 const Home = () => {
+  const isSmallScreen = window.innerWidth < 1024;
+
   return (
     <section className="overflow-hidden bg-[#f7f1eb]">
       <HeroSection />
       <OurImpact />
-      <div className="block lg:hidden">
-        <StackedScrollCards />
-      </div>
-      <div className="hidden lg:block">
-        <HorizontalScrollCards />
-      </div>
+      {isSmallScreen ? <StackedScrollCards /> : <HorizontalScrollCards />}
       <WhyWeExists />
       <Numbers />
       <ReportSections />
