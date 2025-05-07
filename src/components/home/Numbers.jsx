@@ -11,18 +11,79 @@ const Numbers = () => {
   const cardsRef = useRef([]);
 
   useEffect(() => {
-    cardsRef.current.forEach((card, index) => {
-      gsap.to(card, {
-        y: window.innerWidth > 768 ? index % 2 === 0 ? 140 : -120 : -120,
-        ease: "none",
-        scrollTrigger: {
-          trigger: card,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 0.5,
-        },
+    const ctx = gsap.context(() => {
+      const mm = gsap.matchMedia();
+
+      const yOffsetDesktop = [140, -120, 180, -160];
+      const rotationDesktop = [-5, 5, -6, 6];
+
+      const yOffsetMobile = [-50, -40, -30, -50];
+      const rotationMobile = [-3, 3, -4, 4];
+
+      mm.add("(min-width: 768px)", () => {
+        cardsRef.current.forEach((card, index) => {
+          gsap.fromTo(
+            card,
+            { y: 0, rotateZ: rotationDesktop[index] },
+            {
+              y: yOffsetDesktop[index],
+              rotateZ: 0,
+              ease: "none",
+              force3D: true,
+              scrollTrigger: {
+                trigger: card,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 0.5,
+              },
+            }
+          );
+        });
       });
-    });
+
+      mm.add("(max-width: 767px)", () => {
+        cardsRef.current.forEach((card, index) => {
+          // Set initial state
+          gsap.set(card, { 
+            y: 100, 
+            opacity: 0,
+            rotateZ: rotationMobile[index]
+          });
+      
+          // Create a timeline for entrance + parallax
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: card,
+              start: "top bottom-=100",
+              end: "bottom top",
+              scrub: 0.5,
+              // toggleActions: "play none none none" // Not needed with scrub
+            }
+          });
+      
+          // Entrance animation (bottom to top, fade in)
+          tl.to(card, {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out"
+          });
+      
+          // Parallax effect (after entrance)
+          tl.to(card, {
+            y: yOffsetMobile[index],
+            rotateZ: 0,
+            ease: "none",
+            duration: 1 // This duration is relative, since scrub is enabled
+          });
+        });
+      });
+      
+
+      return () => mm.revert();
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -37,18 +98,13 @@ const Numbers = () => {
             <div
               key={index}
               ref={(el) => (cardsRef.current[index] = el)}
-              className={`
-                stat-card 
-                relative 
-                ${index % 2 === 0 ? "flex justify-start" : "flex justify-end"}
-                px-2 sm:px-4 md:px-6
-              `}
-             
+              className={`stat-card relative will-change-transform flex px-2 sm:px-4 md:px-6 ${
+                index % 2 === 0 ? "justify-start" : "justify-end"
+              }`}
             >
               <NumbersCard
                 stat={stat}
                 rotate={index % 2 === 0 ? "rotate-2" : "-rotate-2"}
- 
               />
             </div>
           ))}

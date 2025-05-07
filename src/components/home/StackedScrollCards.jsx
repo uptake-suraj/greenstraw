@@ -1,113 +1,149 @@
-import { useRef, useLayoutEffect, useEffect, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { horizontalData } from "../../assets/data/horizontalData";
-import HorizontalCard from "../card/HorizontalCard";
+// import React, { useRef, useLayoutEffect, useEffect, useState } from "react";
+// import gsap from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import { horizontalData } from "../../assets/data/horizontalData";
+// import HorizontalCard from "../card/HorizontalCard";
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
-const StackedScrollCards = () => {
-  const containerRef = useRef(null);
-  const cardRefs = useRef([]);
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 1280);
-  const animationRef = useRef(null);
+// const StackedScrollCards = () => {
+//   const containerRef = useRef(null);
+//   const cardRefs = useRef([]);
+//   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+//   const timelineRef = useRef(null);
+//   const scrollTriggerRef = useRef(null);
 
-  // Handle screen resize
-  useEffect(() => {
-    const onResize = () => {
-      const small = window.innerWidth < 1280;
-      setIsSmallScreen(small);
-    };
+//   // Handle screen resize
+//   useEffect(() => {
+//     const onResize = () => {
+//       const mobile = window.innerWidth < 768;
+//       if (mobile !== isMobile) {
+//         setIsMobile(mobile);
+//       }
+//     };
 
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
+//     window.addEventListener("resize", onResize);
+//     return () => window.removeEventListener("resize", onResize);
+//   }, [isMobile]);
 
-  useLayoutEffect(() => {
-    // Clear old ScrollTrigger animations on resize
-    ScrollTrigger.getAll().forEach((t) => t.kill());
-    if (!isSmallScreen || !containerRef.current) return;
+//   // Setup and cleanup animations
+//   useLayoutEffect(() => {
+//     // Only create stacked scroll animation on mobile
+//     if (!isMobile || !containerRef.current) return;
 
-    const cards = cardRefs.current;
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: `+=${cards.length * 1000}`,
-        pin: true,
-        scrub: 1,
-      },
-    });
+//     // First cleanup any existing animations
+//     if (scrollTriggerRef.current) {
+//       scrollTriggerRef.current.kill();
+//     }
+//     if (timelineRef.current) {
+//       timelineRef.current.kill();
+//     }
 
-    cards.forEach((card, index) => {
-      if (index === 0) {
-        tl.fromTo(
-          card,
-          { opacity: 1, yPercent: 0, scale: 1 },
-          { opacity: 0.7, yPercent: -2, scale: 0.95, duration: 1 }
-        );
-      } else {
-        tl.fromTo(
-          card,
-          { opacity: 0, yPercent: 75, scale: 1 },
-          { opacity: 1, yPercent: 0, duration: 1 },
-          "-=0.6"
-        );
+//     const cards = cardRefs.current.filter(Boolean);
+    
+//     // Create new animation
+//     const tl = gsap.timeline({
+//       scrollTrigger: {
+//         trigger: containerRef.current,
+//         start: "top top",
+//         end: `+=${cards.length * 1000}`,
+//         pin: true,
+//         scrub: 1,
+//         id: "stacked-scroll"
+//       }
+//     });
 
-        if (index !== cards.length - 1) {
-          tl.to(
-            card,
-            { opacity: 0.7, yPercent: -2, scale: 0.95, duration: 1 },
-            "+=0.4"
-          );
-        }
-      }
+//     // Store the ScrollTrigger instance for cleanup
+//     scrollTriggerRef.current = tl.scrollTrigger;
+//     timelineRef.current = tl;
 
-      // Ensure that previous images disappear when new one comes into view
-      if (index !== cards.length - 1) {
-        tl.to(
-          card,
-          {
-            opacity: 0,
-            yPercent: -50,
-            scale: 0.95,
-            duration: 1,
-            stagger: 0.1,
-          },
-          `-=${0.3}`
-        );
-      }
-    });
+//     cards.forEach((card, index) => {
+//       if (index === 0) {
+//         tl.fromTo(
+//           card,
+//           { opacity: 1, yPercent: 0, scale: 1 },
+//           { opacity: 0.7, yPercent: -2, scale: 0.95, duration: 1 }
+//         );
+//       } else {
+//         tl.fromTo(
+//           card,
+//           { opacity: 0, yPercent: 75, scale: 1 },
+//           { opacity: 1, yPercent: 0, duration: 1 },
+//           "-=0.6"
+//         );
 
-    animationRef.current = tl;
+//         if (index !== cards.length - 1) {
+//           tl.to(
+//             card,
+//             { opacity: 0.7, yPercent: -2, scale: 0.95, duration: 1 },
+//             "+=0.4"
+//           );
+//         }
+//       }
 
-    return () => {
-      tl.kill();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
-  }, [isSmallScreen]);
+//       // Ensure that previous images disappear when new one comes into view
+//       if (index !== cards.length - 1) {
+//         tl.to(
+//           card,
+//           {
+//             opacity: 0,
+//             yPercent: -50,
+//             scale: 0.95,
+//             duration: 1,
+//             stagger: 0.1,
+//           },
+//           `-=${0.3}`
+//         );
+//       }
+//     });
 
-  return (
-    <section
-      ref={containerRef}
-      className="relative h-screen px-4 py-24 lg:hidden "
-    >
-      {horizontalData.map((item, index) => (
-        <div
-          key={item.id}
-          ref={(el) => (cardRefs.current[index] = el)}
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl "
-          style={{ zIndex: 10 - index }}
-        >
-          <HorizontalCard
-            {...item}
-            pageNumber={index + 1}
-            totalPages={horizontalData.length}
-          />
-        </div>
-      ))}
-    </section>
-  );
-};
+//     return () => {
+//       if (scrollTriggerRef.current) {
+//         scrollTriggerRef.current.kill();
+//         scrollTriggerRef.current = null;
+//       }
+//       if (timelineRef.current) {
+//         timelineRef.current.kill();
+//         timelineRef.current = null;
+//       }
+//     };
+//   }, [isMobile]);
 
-export default StackedScrollCards;
+//   // Cleanup on unmount
+//   useEffect(() => {
+//     return () => {
+//       if (scrollTriggerRef.current) {
+//         scrollTriggerRef.current.kill();
+//       }
+//       if (timelineRef.current) {
+//         timelineRef.current.kill();
+//       }
+//     };
+//   }, []);
+
+//   if (!isMobile) return null;
+
+//   return (
+//     <section
+//       ref={containerRef}
+//       className="relative h-screen px-4 py-24"
+//     >
+//       {horizontalData.map((item, index) => (
+//         <div
+//           key={item.id}
+//           ref={(el) => (cardRefs.current[index] = el)}
+//           className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl"
+//           style={{ zIndex: 10 - index }}
+//         >
+//           <HorizontalCard
+//             {...item}
+//             pageNumber={index + 1}
+//             totalPages={horizontalData.length}
+//           />
+//         </div>
+//       ))}
+//     </section>
+//   );
+// };
+
+// export default StackedScrollCards;

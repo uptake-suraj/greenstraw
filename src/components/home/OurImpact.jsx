@@ -11,8 +11,9 @@ const OurImpact = () => {
   const rightImageRef = useRef(null);
 
   useEffect(() => {
-    // Create a GSAP context to isolate these animations
     const ctx = gsap.context(() => {
+      const mm = gsap.matchMedia();
+      
       // Left image animation
       gsap.fromTo(
         leftImageRef.current,
@@ -25,37 +26,62 @@ const OurImpact = () => {
             start: "top bottom",
             end: "bottom top",
             scrub: true,
-            id: "left-image-parallax", // Adding ID for debugging
+            id: "left-image-parallax",
           },
         }
       );
 
-      // Right image animation
-      gsap.fromTo(
-        rightImageRef.current,
-        { y: 100 },
-        {
-          y: -100,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-            id: "right-image-parallax", // Adding ID for debugging
-          },
-        }
-      );
+      mm.add("(min-width: 768px)", () => {
+        // Right image animation (desktop)
+        console.log("in desktop right image")
+        gsap.fromTo(
+          rightImageRef.current,
+          { y: 100 },
+          {
+            y: -100,
+            ease: "none",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+              id: "right-image-parallax",
+            },
+          }
+        );
+      });
+
+      mm.add("(max-width: 767px)", () => {
+        // Right image animation (mobile)
+        console.log("in mobile right image")
+        gsap.fromTo(
+          rightImageRef.current,
+          { y: 100 },
+          {
+            y: -10,
+            ease: "none",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+              id: "right-image-parallax",
+            },
+          }
+        );
+      });
+
+      return () => mm.revert();
     });
 
-    return () => {
-      // Clean up when component unmounts
-      ctx.revert();
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full lg:py-36 py-56 min-h-screen">
+    <section
+      ref={sectionRef}
+      className="w-full lg:py-36 py-56 min-h-screen"
+    >
       <div className="">
         <div className="mx-auto relative flex items-center justify-center flex-col md:flex-row">
           {/* Left image */}
@@ -108,8 +134,10 @@ const OurImpact = () => {
           </div>
 
           {/* Right image */}
-          <div ref={rightImageRef}
-            className="lg:w-[400px] w-[300px] mt-6 md:mt-0 md:self-end transform rotate-8 absolute right-0 md:top-50 sm:-bottom-50 -bottom-60 z-10">
+          <div
+            ref={rightImageRef}
+            className="lg:w-[400px] w-[300px] mt-6 md:mt-0 md:self-end transform rotate-8 absolute right-0 md:top-50 sm:-bottom-50 -bottom-60 z-10"
+          >
             <div className="bg-[#0AA47C] pt-5 px-1 rounded-lg shadow-lg">
               <img
                 src={Images.ourImpact1}

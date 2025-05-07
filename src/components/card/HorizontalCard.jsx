@@ -12,12 +12,12 @@ const HorizontalCard = ({
 }) => {
   return (
     <div
-      className={`rounded-[20px] lg:h-160   ${bgColor} flex flex-col lg:flex-row items-stretch sm:gap-18 gap-5 p-6 md:p-8 max-w-[1500px] mx-auto`}
+      className={`rounded-[20px]  md:h-180 h-screen  ${bgColor} flex flex-col lg:flex-row items-stretch sm:gap-18 gap-5 p-6 md:p-8 md:w-400 mx-auto`}
     >
       <img
         src={image}
         alt={title}
-        className="lg:object-cover object-contain w-full lg:w-1/2 lg:h-full h-60 rounded-[12px]"
+        className="lg:object-cover object-contain w-full lg:w-[40%] lg:h-full h-60 rounded-[12px]"
       />
 
       <div className="w-full lg:w-[60%] flex flex-col">
@@ -31,10 +31,10 @@ const HorizontalCard = ({
         <p className="lg:text-4xl text-2xl font-medium mb-4 tracking-wider">
           {title}
         </p>
-        <p className="lg:text-[26px] text-lg font-nohemi-light text-black mb-2">
+        <p className="lg:text-2xl text-lg xl:leading-9 font-nohemi-light mb-2">
           {content1}
         </p>
-        <p className="lg:text-[26px] text-lg text-black font-nohemi-light">
+        <p className="lg:text-2xl text-lg xl:leading-9 font-nohemi-light">
           {content2}
         </p>
 

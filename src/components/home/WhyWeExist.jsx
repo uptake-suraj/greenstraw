@@ -5,7 +5,7 @@ const WhyWeExists = () => {
     <section className="px-4">
       <div className="relative w-full">
         {/* White Box */}
-        <div className="bg-white rounded-4xl xl:mr-100 lg:mr-80 lg:pl-18 pl-8 pt-8 pb-22 lg:pr-12 pr-4 mb-4 mt-4">
+        <div className="bg-white rounded-4xl xl:mr-100 lg:mr-80 lg:pl-18 pl-8 pt-8 pb-22 lg:pr-12 pr-4 my-4">
           <h1 className="md:text-5xl text-2xl font-medium mb-4 tracking-wider">
             WHY WE EXIST: THE <br /> GREENSTRAW
           </h1>
