@@ -28,13 +28,13 @@ const HorizontalCard = ({
           </span>
         </div>
 
-        <p className="sm:text-4xl text-2xl font-medium mb-4 tracking-wider">
+        <p className="lg:text-4xl text-2xl font-medium mb-4 tracking-wider">
           {title}
         </p>
-        <p className="sm:text-[26px] text-base font-nohemi-light text-black mb-2">
+        <p className="lg:text-[26px] text-lg font-nohemi-light text-black mb-2">
           {content1}
         </p>
-        <p className="sm:text-[26px] text-base text-black font-nohemi-light">
+        <p className="lg:text-[26px] text-lg text-black font-nohemi-light">
           {content2}
         </p>
 

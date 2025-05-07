@@ -1,56 +1,58 @@
 import { useRef, useEffect } from "react";
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const useScaleAnimation = (delay = 0.3, duration = 2) => {
-  const ref = useRef(null);
-  const animationRef = useRef(null);
 
-  useGSAP(() => {
-    // Wait for layout to stabilize before initializing the animation
-    const initAnimation = () => {
-      // Clear any existing animation to prevent duplicates
-      if (animationRef.current) {
-        animationRef.current.kill();
-      }
-
-      // Initialize the element with the starting state
-      gsap.set(ref.current, { opacity: 0.5, scale: 0.2 });
+const useScaleAnimation = (
+  delay = 0, 
+  duration = 0.8, 
+  startScale = 0.85, 
+  startPosition = "top 85%",
+  easing = "power3.out"
+) => {
+  const elementRef = useRef(null);
+  
+  useEffect(() => {
+    const element = elementRef.current;
+    if (!element) return;
+    
+    // Create context for cleanup
+    const ctx = gsap.context(() => {
+      // Set initial state
+      gsap.set(element, { 
+        opacity: 0,
+        scale: startScale,
+        force3D: true // Enable hardware acceleration
+      });
       
-      // Create and store the animation
-      animationRef.current = gsap.to(ref.current, {
+      // Create animation
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: element,
+          start: startPosition,
+          toggleActions: "play none none none",
+          once: true,
+          id: `scale-in-${Math.random().toString(36).substr(2, 9)}` 
+        }
+      });
+      
+      tl.to(element, {
         opacity: 1,
         scale: 1,
-        duration,
-        delay,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ref.current,
-          start: "top 85%",
-          toggleActions: "play none none none",
-          once:true,
-          invalidateOnRefresh: true,
-        },
+        duration: duration,
+        delay: delay,
+        ease: easing,
+        clearProps: "transform" // Clean up transform after animation completes
       });
-    };
-
-    // Small timeout to ensure DOM is fully rendered
-    const timer = setTimeout(() => {
-      initAnimation();
-    }, 100);
-
-    return () => {
-      clearTimeout(timer);
-      if (animationRef.current) {
-        animationRef.current.kill();
-      }
-    };
-  }, [delay, duration]);
-
-  return ref;
+    });
+    
+    // Clean up
+    return () => ctx.revert();
+  }, [delay, duration, startScale, startPosition, easing]);
+  
+  return elementRef;
 };
 
 export default useScaleAnimation;

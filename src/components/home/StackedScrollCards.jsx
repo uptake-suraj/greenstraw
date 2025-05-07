@@ -90,7 +90,7 @@ const StackedScrollCards = () => {
   return (
     <section
       ref={containerRef}
-      className="relative h-screen overflow-hidden px-4 py-24 xl:hidden "
+      className="relative h-screen px-4 py-24 lg:hidden "
     >
       {horizontalData.map((item, index) => (
         <div

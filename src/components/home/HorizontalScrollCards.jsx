@@ -14,12 +14,12 @@ const HorizontalScrollCards = () => {
     const sectionEl = sectionRef.current;
     const triggerEl = triggerRef.current;
 
-    const updateAnimation = () => {
+    // Create context to isolate this ScrollTrigger
+    const ctx = gsap.context(() => {
       const scrollWidth = sectionEl.scrollWidth;
       const windowWidth = window.innerWidth;
 
-      ScrollTrigger.killAll(); // Kill previous triggers
-
+      // Create the horizontal scroll animation
       gsap.fromTo(
         sectionEl,
         { x: 0 },
@@ -32,17 +32,25 @@ const HorizontalScrollCards = () => {
             end: () => `+=${scrollWidth}`,
             scrub: 0.6,
             pin: true,
+            pinSpacing: true,
             invalidateOnRefresh: true,
+            anticipatePin: 1,
+            id: "horizontal-scroll",
           },
         }
       );
+    });
+
+    // Function to handle resize events
+    const updateAnimation = () => {
+      ScrollTrigger.refresh();
     };
 
-    updateAnimation();
     window.addEventListener("resize", updateAnimation);
 
     return () => {
-      ScrollTrigger.killAll();
+      // Clean up context when component unmounts
+      ctx.revert();
       window.removeEventListener("resize", updateAnimation);
     };
   }, []);
@@ -53,7 +61,7 @@ const HorizontalScrollCards = () => {
         <div
           ref={sectionRef}
           className="flex gap-8 px-4 py-20"
-          style={{ width: `${horizontalData.length * 100}vw` }} 
+          style={{ width: `${horizontalData.length * 100}vw` }}
         >
           {horizontalData.map((item, index) => (
             <HorizontalCard
