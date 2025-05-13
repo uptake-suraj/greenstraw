@@ -1,8 +1,4 @@
 import React from "react";
-// import { routes } from "./routes";
-// import { useRoutes } from "react-router-dom";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
 import Home from "./pages/Home";
 import Footer from "./components/footer/Footer";
 
@@ -13,10 +9,8 @@ import Footer from "./components/footer/Footer";
 const App = () => {
   return (
     <>
-    <>
       <Home />
-      <Footer/>
-      </>
+      <Footer />
     </>
   );
 };
